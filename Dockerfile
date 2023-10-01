@@ -1,16 +1,25 @@
-FROM python:latest
+# pull official base image
+FROM python:3.8.1-slim-buster
 
+# set work directory
+RUN mkdir -p /app
 WORKDIR /app
 
-# Copy requirements.txt first for better cache on later pushes
-COPY requirements.txt /app/requirements.txt
+# install system dependencies
+RUN apt-get update && apt-get install -y netcat
 
-# pip install python deps from requirements.txt on the resin.io build server
+# install dependencies
+RUN pip install --upgrade pip
+COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
-# This will copy all files in our root to the working  directory in the container
-COPY . /app
+# copy project
+COPY entrypoint.sh /app/
+RUN chmod u+x /app/entrypoint.sh
 
-ENTRYPOINT [ "python" ]
+COPY . /app/
 
-CMD ["controller.py" ]
+EXPOSE 5000
+
+# run entrypoint.sh
+CMD ["/bin/bash", "/app/entrypoint.sh"]
