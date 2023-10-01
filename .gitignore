@@ -17,4 +17,4 @@ override.tf.json
 
 .idea/
 
-.envgi
+.env
