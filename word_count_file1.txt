@@ -1,3 +1,0 @@
-Number of words in file1.txt: 3
-*****
-{'hello': 1, 'hello1': 1, 'hello2': 1}
