@@ -15,6 +15,7 @@ def get_env_var(name):
 
 
 class Config(object):
+    APP_PORT = get_env_var('APP_PORT')
     ACCESS_TOKEN = get_env_var('ACCESS_TOKEN')
     AWS_ACCESS_KEY = get_env_var('AWS_ACCESS_KEY')
     AWS_SECRET_KEY = get_env_var('AWS_SECRET_KEY')

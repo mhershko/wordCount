@@ -1,10 +1,6 @@
-import os
-
-import click
 from flask import (
-    Flask, current_app
+    Flask
 )
-from flask.cli import with_appcontext
 
 
 def create_app():
@@ -12,7 +8,7 @@ def create_app():
     app.config.from_object("config.Config")
 
     with app.app_context():
-        from views import web
+        from src.views import web
         app.register_blueprint(web)
 
     return app

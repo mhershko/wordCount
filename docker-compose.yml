@@ -2,11 +2,14 @@ version: "3.1"
 services:
  web:
    build: .
+   expose:
+     - "5000"
    ports:
-       - "8000:5000"
+     - "5000:5000"
    environment:
    - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
    - AWS_SECRET_KEY=${AWS_SECRET_KEY}
    - S3_BUCKET_INPUT_FILES=${S3_BUCKET_INPUT_FILES}
    - S3_BUCKET_OUTPUT_FILES=${S3_BUCKET_OUTPUT_FILES}
    - ACCESS_TOKEN=${ACCESS_TOKEN}
+   - APP_PORT= ${APP_PORT}
