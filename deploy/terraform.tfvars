@@ -1,0 +1,6 @@
+default_region      = "eu-central-1"
+docker_username     = "mhershko"
+github_username     = "mhershko"
+github_project_name = "wordCount"
+app_name            = "word-count-app"
+environment         = "production"
