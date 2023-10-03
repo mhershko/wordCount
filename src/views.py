@@ -1,4 +1,5 @@
 
+
 from flask import (
     Blueprint,
     jsonify,
@@ -18,15 +19,16 @@ web = Blueprint('web', __name__, template_folder='templates')
 @token_required
 def index():
     return jsonify({'status': 'success',
-                    'message': 'call http://localhost:5000/count-words?fileName=<FILE NAME>'}
+                    'message': 'call http://localhost:5000/count-words with fileName as payload'}
                    ), 200
 
 
-# http://localhost:5000/count-words?fileName=<FILE NAME>
-@web.route('/count-words')
+# http://localhost:5000/count-words
+@web.route('/count-words', methods=["POST"])
 @token_required
 def count_words():
-    file_name = request.args.get('fileName')
+    data = request.get_json()
+    file_name = data['fileName']
     res = WordCount().count_words_in_file(file_name)
 
     return res

@@ -1,7 +1,7 @@
+
 import os
 from collections import Counter
 
-import boto3
 import logging
 
 from flask import current_app
@@ -51,5 +51,8 @@ class WordCount:
             output_file.write(f"Number of words in {file_name}: {num_of_words}\n")
             output_file.write("*****\n")
             output_file.write(str(word_count_dict))
+
         output_file_s3_path = self.s3_handler.upload_file_to_s3(output_file_name, self.s3_bucket_output_files)
+        if os.path.exists(output_file_name):
+            os.remove(output_file_name)
         return output_file_s3_path

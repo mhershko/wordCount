@@ -29,10 +29,14 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         {
             "Effect": "Allow",
             "Resource": [
-                "arn:aws:s3:::${var.app_name}-${var.environment}/*"
+                "arn:aws:s3:::${var.app_name}/*"
             ],
             "Action": [
-                "s3:*"
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:GetObjectVersion",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLocation"
             ]
         },
         {

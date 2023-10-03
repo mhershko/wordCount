@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "ecs_task_execution_role" {
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name               = "ecs-staging-execution-role-1"
+  name               = "ecs-staging-execution-role"
   assume_role_policy = data.aws_iam_policy_document.ecs_task_execution_role.json
 }
 
@@ -36,15 +36,6 @@ resource "aws_iam_role_policy" "ecs_task_execution_role" {
             "logs:PutLogEvents"
         ],
         "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "secretsmanager:GetSecretValue"
-      ],
-      "Resource": [
-        "*"
-      ]
     }
   ]
 }

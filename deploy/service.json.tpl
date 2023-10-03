@@ -1,7 +1,7 @@
 [
   {
     "name": "${container_name}",
-    "image": "${aws_ecr_repository}:${tag}",
+    "image": "820983956723.dkr.ecr.eu-central-1.amazonaws.com/word-count-app:${tag}",
     "essential": true,
     "logConfiguration": {
       "logDriver": "awslogs",

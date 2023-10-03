@@ -1,3 +1,4 @@
+
 from flask import (
     Flask
 )
@@ -5,10 +6,10 @@ from flask import (
 
 def create_app():
     app = Flask(__name__, instance_relative_config=False)
-    app.config.from_object("config.Config")
+    app.config.from_object('config.Config')
 
     with app.app_context():
-        from src.views import web
+        from views import web
         app.register_blueprint(web)
 
     return app
