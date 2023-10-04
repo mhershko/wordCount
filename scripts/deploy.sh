@@ -1,6 +1,6 @@
 #!/bin/bash
 
-brew install jq
+curl -L -o /usr/bin/jq.exe https://github.com/stedolan/jq/releases/latest/download/jq-win64.exe
 
 GITHUB_TOKEN="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"
 ACCESS_TOKEN="aaa"
