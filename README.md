@@ -4,6 +4,7 @@
 WordCount app exposes API that receive for input a file name that located in s3 bucket, and 
 perform count of the words in the
 file and how many times each word appeared. 
+
 The app stores the results in another S3 bucket.
 
 ```commandline
